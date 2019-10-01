@@ -37,11 +37,11 @@ evalCBN (EMinusOne e) = case (evalCBN e) of
     (ENatS e) -> e
 evalCBN (ENatS e') = ENatS (evalCBN e')
 evalCBN (EHd e) = case (evalCBN e) of
-   ENil -> ENil
-   (ECons e1 e2)
+    ENil -> ENil
+    (ECons e1 e2) -> e1
 evalCBN (ETl e) = case (evalCBN e) of
-   ENil -> ENil
-  (ECons e1 e2) -> e2
+    ENil -> ENil
+    (ECons e1 e2) -> e2
 evalCBN x = x -- Catch all
 
 newtype IDM m a = IDM{unIDM :: m}
